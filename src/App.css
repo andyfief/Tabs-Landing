@@ -19,43 +19,36 @@
   -webkit-backdrop-filter: blur(12px);
 }
 
-/* ─── Logo ────────────────────────────────────────────────── */
-.logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
+/* ─── Wordmark ────────────────────────────────────────────── */
+.wordmark {
+  font-family: var(--font-geologica);
   color: #fff;
   user-select: none;
+  letter-spacing: -0.5px;
 }
 
-.logo-wordmark {
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: -0.3px;
+.wordmark--nav {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.wordmark--hero {
+  font-size: clamp(52px, 8vw, 88px);
+  font-weight: 600;
+  letter-spacing: -2px;
   line-height: 1;
 }
 
-.logo-lines {
-  width: 16px;
-  height: auto;
-  flex-shrink: 0;
-  color: #fff;
-  opacity: 0.85;
-}
-
-.logo--large .logo-wordmark {
-  font-size: 42px;
-  letter-spacing: -1px;
-}
-
-.logo--large .logo-lines {
-  width: 32px;
-  margin-top: 2px;
+.wordmark--footer {
+  font-size: 16px;
+  font-weight: 600;
 }
 
 /* ─── Hero ────────────────────────────────────────────────── */
 .hero {
   flex: 1;
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,6 +56,29 @@
   text-align: center;
   padding: 100px 24px 80px;
   gap: 28px;
+}
+
+/* ─── Decorative lines ────────────────────────────────────── */
+/* Container spans the full hero so each child can be positioned freely */
+.deco-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.deco-line {
+  position: absolute;
+  background: #fff;
+}
+
+/* Soft white glow — toggled via GLOW constant in App.tsx */
+.deco-line--glow {
+  box-shadow: 0 0 18px 5px rgba(255, 255, 255, 0.39);
+}
+
+@media (max-width: 768px) {
+  .deco-lines { display: none; }
 }
 
 .tagline {

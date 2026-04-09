@@ -1,19 +1,66 @@
+import { useEffect, useRef } from 'react'
 import './App.css'
 
-function TabsLogo({ large = false }: { large?: boolean }) {
+// ─── Decorative lines config ────────────────────────────────
+// Each entry is one line. Positions are relative to the hero section.
+// right/top accept any CSS value ('5%', '200px', etc.)
+// Set GLOW to false to remove the soft white glow on all lines.
+
+const PARALLAX = 0.4   // scroll speed ratio: 0 = fixed, 1 = normal scroll
+const GLOW     = true  // toggle glow effect on all lines
+
+type LineConfig = {
+  width:     number   // px
+  thickness: number   // px
+  radius:    number   // px — rounded ends
+  opacity:   number   // 0–1
+  right:     string   // from right edge of hero
+  top:       string   // from top of hero
+}
+
+// Layout mirrors the logo:  ─────────
+//                           ──── ────
+//                           ─────────
+const LINES: LineConfig[] = [
+  // top — full-width bar
+  { width: 460, thickness: 13, radius: 7, opacity: 0.8, right: '10%',   top: '23%' },
+  // middle left
+  { width: 150, thickness: 13, radius: 7, opacity: 0.8, right: '23%',  top: '40%' },
+  // middle right
+  { width: 250, thickness: 13, radius: 7, opacity: 0.8, right: '5%',   top: '40%' },
+  // bottom — full-width bar
+  { width: 460, thickness: 13, radius: 7, opacity: 0.8, right: '10%',   top: '57%' },
+]
+
+function DecorativeLines() {
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function onScroll() {
+      if (ref.current) {
+        ref.current.style.transform = `translateY(${window.scrollY * PARALLAX}px)`
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <div className={`logo${large ? ' logo--large' : ''}`}>
-      <span className="logo-wordmark">Tabs</span>
-      <svg
-        className="logo-lines"
-        viewBox="0 0 18 14"
-        fill="none"
-        aria-hidden="true"
-      >
-        <rect x="0" y="0" width="18" height="2.4" rx="1.2" fill="currentColor" />
-        <rect x="0" y="5.8" width="18" height="2.4" rx="1.2" fill="currentColor" />
-        <rect x="0" y="11.6" width="18" height="2.4" rx="1.2" fill="currentColor" />
-      </svg>
+    <div ref={ref} className="deco-lines" aria-hidden="true">
+      {LINES.map((line, i) => (
+        <div
+          key={i}
+          className={`deco-line${GLOW ? ' deco-line--glow' : ''}`}
+          style={{
+            width:        line.width,
+            height:       line.thickness,
+            borderRadius: line.radius,
+            opacity:      line.opacity,
+            right:        line.right,
+            top:          line.top,
+          }}
+        />
+      ))}
     </div>
   )
 }
@@ -82,18 +129,19 @@ export default function App() {
     <div className="page">
       {/* Nav */}
       <header className="nav">
-        <TabsLogo />
+        <span className="wordmark wordmark--nav">Tabs</span>
       </header>
 
       {/* Hero */}
       <section className="hero">
-        <TabsLogo large />
+        <DecorativeLines />
+        <span className="wordmark wordmark--hero">Tabs</span>
         <h1 className="tagline">
-          Track expenses.<br />
-          Hold accountable.<br />
-          Keep tabs.
+          Track spending.<br />
+          Stay accountable.<br />
+          Keep Tabs.
         </h1>
-        <p className="sub">Shared expenses, handled honestly.</p>
+        <p className="sub">Shared expenses handled honestly.</p>
 
         <div className="store-badges">
           <a href="#" className="badge badge-apple" aria-label="Coming soon to App Store">
@@ -149,7 +197,7 @@ export default function App() {
 
       {/* Footer */}
       <footer className="footer">
-        <TabsLogo />
+        <span className="wordmark wordmark--footer">Tabs</span>
         <span>© {new Date().getFullYear()} Tabs. All rights reserved.</span>
       </footer>
     </div>
