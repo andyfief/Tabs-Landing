@@ -118,9 +118,9 @@ const features = [
         <path d="M4 10l4 4 8-8" stroke="#888" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
-    title: 'Settle up cleanly',
+    title: 'Settle balances quick',
     description:
-      'When the trip ends or the bill comes due, close out the tab with a clear summary of who owes who.',
+      "Close a Tab to generate links to your friends' Venmo or CashApp accounts with exact balances prefilled. View their phone number's last 4 digits so theres no confusion.",
   },
 ]
 
@@ -202,7 +202,6 @@ export default function App() {
             </div>
           </a>
         </div>
-        <p className="badge-note">App not yet available — links will go live at launch.</p>
       </section>
 
       {/* Features */}
@@ -221,22 +220,6 @@ export default function App() {
         <h2>Coming soon to iOS &amp; Android.</h2>
         <p>Drop your email and we'll let you know when Tabs is ready.</p>
         <WaitlistForm />
-        <div className="store-badges">
-          <a href="#" className="badge" aria-label="Coming soon to App Store">
-            <AppleIcon />
-            <div className="badge-text">
-              <span className="badge-sub">Coming soon to</span>
-              <span className="badge-main">App Store</span>
-            </div>
-          </a>
-          <a href="#" className="badge" aria-label="Coming soon to Google Play">
-            <GooglePlayIcon />
-            <div className="badge-text">
-              <span className="badge-sub">Coming soon to</span>
-              <span className="badge-main">Google Play</span>
-            </div>
-          </a>
-        </div>
       </section>
 
       {/* Footer */}
