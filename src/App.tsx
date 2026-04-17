@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './App.css'
 
 // ─── Decorative lines config ────────────────────────────────
@@ -124,6 +124,49 @@ const features = [
   },
 ]
 
+function WaitlistForm() {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setStatus('loading')
+    try {
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      if (!res.ok) throw new Error()
+      setStatus('success')
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  if (status === 'success') {
+    return <p className="waitlist-success">You're on the list!</p>
+  }
+
+  return (
+    <form className="waitlist-form" onSubmit={handleSubmit}>
+      <input
+        className="waitlist-input"
+        type="email"
+        placeholder="your@email.com"
+        value={email}
+        onChange={e => setEmail(e.target.value)}
+        required
+        disabled={status === 'loading'}
+      />
+      <button className="waitlist-btn" type="submit" disabled={status === 'loading'}>
+        {status === 'loading' ? 'Sending…' : 'Notify me'}
+      </button>
+      {status === 'error' && <p className="waitlist-error">Something went wrong — try again.</p>}
+    </form>
+  )
+}
+
 export default function App() {
   return (
     <div className="page">
@@ -177,6 +220,7 @@ export default function App() {
       <section className="cta">
         <h2>Coming soon to iOS &amp; Android.</h2>
         <p>Drop your email and we'll let you know when Tabs is ready.</p>
+        <WaitlistForm />
         <div className="store-badges">
           <a href="#" className="badge" aria-label="Coming soon to App Store">
             <AppleIcon />
