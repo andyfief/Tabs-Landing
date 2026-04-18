@@ -97,7 +97,7 @@ const features = [
     ),
     title: 'Start a Tab',
     description:
-      'Create or join a Tab for any occasion — a night out, a trip, shared expenses over time.',
+      'Create or join a Tab for any occasion — a night out, a trip, or shared expenses over time.',
   },
   {
     icon: (
