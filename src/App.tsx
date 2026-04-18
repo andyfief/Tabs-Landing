@@ -95,9 +95,20 @@ const features = [
         <path d="M7 10h6M10 7v6" stroke="#888" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
     ),
-    title: 'Split anything',
+    title: 'Start a Tab',
     description:
-      'Add expenses on the fly and split them however makes sense — equally, by percentage, or custom amounts.',
+      'Create or join a Tab for any occasion — a night out, a trip, shared expenses over time.',
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <rect x="2" y="4" width="16" height="12" rx="2" stroke="#888" strokeWidth="1.5" />
+        <path d="M7 10h6M10 7v6" stroke="#888" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    ),
+    title: 'Split Anything',
+    description:
+      'Add expenses on the fly and split them however makes sense — equally or custom amounts.',
   },
   {
     icon: (
@@ -108,7 +119,7 @@ const features = [
         <path d="M14 12c1.66.44 3 1.76 3 4" stroke="#888" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
     ),
-    title: 'Everyone stays in sync',
+    title: 'Stay in Sync',
     description:
       'Balances update in real time. No spreadsheets, no confusion — everyone on the tab sees exactly where things stand.',
   },
@@ -118,9 +129,9 @@ const features = [
         <path d="M4 10l4 4 8-8" stroke="#888" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
-    title: 'Settle balances quick',
+    title: 'Settle Balances Quick',
     description:
-      "Close a Tab to generate links to your friends' Venmo or CashApp accounts with exact balances prefilled. View their phone number's last 4 digits so theres no confusion.",
+      "Close a Tab to generate Venmo or Cash App links with exact amounts prefilled — last 4 digits of phone numbers shown so you can pay without hassle.",
   },
 ]
 
