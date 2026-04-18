@@ -91,8 +91,7 @@ const features = [
   {
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-        <rect x="2" y="4" width="16" height="12" rx="2" stroke="#888" strokeWidth="1.5" />
-        <path d="M7 10h6M10 7v6" stroke="#888" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M5 10h10M10 5v10" stroke="#888" strokeWidth="2" strokeLinecap="round" />
       </svg>
     ),
     title: 'Start a Tab',
@@ -102,8 +101,9 @@ const features = [
   {
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-        <rect x="2" y="4" width="16" height="12" rx="2" stroke="#888" strokeWidth="1.5" />
-        <path d="M7 10h6M10 7v6" stroke="#888" strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="10" cy="5" r="1.5" fill="#888" />
+      <line x1="5" y1="10" x2="15" y2="10" stroke="#888" strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="10" cy="15" r="1.5" fill="#888" />
       </svg>
     ),
     title: 'Split Anything',
